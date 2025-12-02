@@ -1,0 +1,101 @@
+﻿:root{
+  --bg:#f3f5f7;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#1f2937; /* dark slate */
+  --accent-2:#111827;
+  --brand:#d97706; /* amber */
+  --success:#10b981;
+  --danger:#ef4444;
+  --glass: rgba(255,255,255,0.6);
+  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(180deg, #f7fafc 0%, var(--bg) 100%);
+  color:var(--accent-2);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{max-width:1100px;margin:0 auto;padding:1rem}
+
+header{background:linear-gradient(90deg,#111827 0%, #1f2937 100%);color:#fff;padding:1rem 0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.75rem}
+.logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#f97316);display:flex;align-items:center;justify-content:center;font-size:22px}
+h1{margin:0;font-size:1.15rem}
+.tag{margin:0;font-size:.85rem;color:#fce2bf}
+.small-note{opacity:.9}
+
+main.layout{display:flex;gap:1rem;padding:1.25rem 0;align-items:flex-start}
+.panel{background:var(--card);border-radius:12px;padding:1rem;box-shadow:var(--shadow);border:1px solid rgba(16,24,40,0.04)}
+#booking{flex:1;min-width:320px}
+#appointments{width:340px}
+
+label{display:block;margin:0 0 .4rem;color:var(--muted);font-size:.9rem}
+input[type=date]{padding:.6rem .75rem;border-radius:8px;border:1px solid rgba(16,24,40,0.07);width:100%;font-size:1rem;background:linear-gradient(180deg,#fff,#fbfdff)}
+
+.slots{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.slot{appearance:none;border:1px solid rgba(16,24,40,0.06);background:linear-gradient(180deg,#fff,#fbfbff);padding:.55rem .85rem;border-radius:10px;cursor:pointer;box-shadow:0 1px 2px rgba(16,24,40,0.03);transition:transform .12s ease,box-shadow .12s ease,background .12s ease;border-width:1px;font-weight:600;color:var(--accent-2)}
+.slot:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(16,24,40,0.08)}
+.slot:focus{outline:none;box-shadow:0 0 0 4px rgba(59,130,246,0.12)}
+.slot.booked{background:linear-gradient(180deg,#fff5f5,#fff1f1);border-color:rgba(239,68,68,0.12);color:var(--danger);cursor:not-allowed;opacity:.95}
+.slot.past{opacity:.55;cursor:not-allowed}
+.slot.selected{background:linear-gradient(90deg,#f0f9ff,#e6f7ff);border-color:rgba(14,165,233,0.12)}
+
+.appointments-list{list-style:none;padding:0;margin:0}
+.appointments-list li{display:flex;justify-content:space-between;align-items:center;padding:.6rem;border-radius:8px;margin-bottom:.45rem;border:1px solid rgba(16,24,40,0.03);background:linear-gradient(180deg,#fff,#fbfdff)}
+.appointments-list li .time{font-weight:600;color:var(--accent-2)}
+.appointments-list li .meta{color:var(--muted);font-size:.9rem}
+.btn{background:var(--accent-2);color:#fff;border:none;padding:.45rem .6rem;border-radius:8px;cursor:pointer;font-weight:600}
+.btn.ghost{background:transparent;color:var(--accent-2);border:1px solid rgba(16,24,40,0.06)}
+
+.feedback{margin-top:.75rem;color:var(--muted);font-size:.95rem}
+
+footer{padding:1rem 0;color:var(--muted)}
+
+/* Responsive */
+@media (max-width: 880px){
+  main.layout{flex-direction:column}
+  #appointments{width:100%}
+}
+
+/* Small screens: more compact slots */
+@media (max-width:480px){
+  .slot{padding:.45rem .6rem;border-radius:8px;font-size:.95rem}
+}
+
+/* Confirm bar */
+.confirm-bar{display:flex;justify-content:space-between;align-items:center;margin-top:0.8rem;padding:.6rem;border-radius:10px;background:linear-gradient(180deg,#ffffff,#fbfdff);border:1px solid rgba(16,24,40,0.03)}
+.selected-info{font-weight:600;color:var(--accent-2)}
+.confirm-actions{display:flex;gap:.5rem}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:60}
+.modal[aria-hidden="false"]{display:flex}
+.modal-backdrop{position:absolute;inset:0;background:rgba(3,7,18,0.5);backdrop-filter:blur(2px)}
+.modal-content{position:relative;z-index:61;background:var(--card);padding:1.2rem;border-radius:12px;max-width:420px;width:100%;box-shadow:var(--shadow);border:1px solid rgba(16,24,40,0.04)}
+.modal-actions{display:flex;justify-content:flex-end;gap:.5rem;margin-top:.75rem}
+
+/* Toasts */
+.toasts{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:.5rem;z-index:70}
+.toast{min-width:200px;padding:.6rem .8rem;border-radius:10px;color:#fff;box-shadow:0 6px 20px rgba(2,6,23,0.12);display:flex;justify-content:space-between;align-items:center;gap:.5rem;transform:translateY(12px);opacity:0;animation:toast-in .26s forwards}
+.toast.success{background:var(--success)}
+.toast.info{background:#0ea5e9}
+.toast.warn{background:#f59e0b}
+.toast.error{background:var(--danger)}
+.toast .close{background:transparent;border:none;color:rgba(255,255,255,0.9);font-weight:700;cursor:pointer}
+
+@keyframes toast-in{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* appointment add/remove animations */
+.appointments-list li.new{animation:appt-in .36s ease}
+.appointments-list li.removing{opacity:0;transform:translateX(12px);transition:all .28s ease}
+@keyframes appt-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+

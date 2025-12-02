@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Barbería  Reservas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="logo">✂️</div>
+          <div>
+            <h1>Barbería</h1>
+            <p class="tag">Reservas</p>
+          </div>
+        </div>
+        <p class="small-note">Reservas locales · 1 hora por cita</p>
+      </div>
+    </header>
+
+    <main class="container layout">
+      <section class="panel" id="booking">
+        <h2>Reservar cita</h2>
+        <label for="date">Fecha</label>
+        <input type="date" id="date">
+
+        <div id="slotsContainer">
+          <h3>Horarios disponibles</h3>
+          <div id="slots" class="slots" role="list"></div>
+
+          <div class="confirm-bar" id="confirmBar" aria-live="polite">
+            <div id="selectedInfo" class="selected-info">Ningún horario seleccionado</div>
+            <div class="confirm-actions">
+              <button id="clearSelection" class="btn ghost">Limpiar</button>
+              <button id="confirmBtn" class="btn" disabled>Confirmar reserva</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+      </section>
+
+      <aside class="panel" id="appointments">
+        <h2>Próximas citas</h2>
+        <ul id="appointmentsList" class="appointments-list"></ul>
+      </aside>
+    </main>
+
+    <footer>
+      <div class="container">
+        <small>Datos guardados en localStorage  App local</small>
+      </div>
+    </footer>
+
+    <div id="modal" class="modal" aria-hidden="true">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h3 id="modalTitle">Confirmar reserva</h3>
+        <p id="modalBody">Confirmar...</p>
+        <div class="modal-actions">
+          <button id="modalCancel" class="btn ghost">Cancelar</button>
+          <button id="modalConfirm" class="btn">Confirmar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+    <script src="app.js"></script>
+  </body>
+</html>

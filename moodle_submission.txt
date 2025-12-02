@@ -1,6 +1,0 @@
-Repositorio: https://github.com/sunadyp/Agentes-Inteligentes-para-Programacion
-
-Descripción breve para Moodle:
-Proyecto: "App de reservas local — Barbería". Webapp en HTML/CSS/JS que permite seleccionar fecha y franjas horarias, confirmar reservas y persistirlas en `localStorage`. Ver rama `add-local-project` para el código completo y archivos de ejecución.
-
-Instrucciones rápidas: abrir `index.html` o servir con `python -m http.server 8000` y navegar a `http://localhost:8000`.
